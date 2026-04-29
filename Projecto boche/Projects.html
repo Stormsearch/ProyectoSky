@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter', sans-serif;
+}
+
+body {
+  background:#05070a;
+  color:white;
+  padding-top:100px;
+}
+
+/* NAVBAR */
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(5,7,10,0.6);
+  backdrop-filter: blur(10px);
+}
+
+.logo { font-family:'Orbitron'; }
+
+nav { display:flex; align-items:center; }
+
+nav a {
+  margin:0 12px;
+  color:#aaa;
+  text-decoration:none;
+}
+
+nav a:hover { color:white; }
+
+.cta {
+  border:1px solid rgba(255,255,255,0.2);
+  padding:8px 16px;
+  border-radius:20px;
+}
+
+/* HEADER */
+h1 {
+  font-family:'Orbitron';
+  padding:0 8%;
+  margin-bottom:20px;
+}
+
+/* FILTERS */
+.filters {
+  padding:0 8%;
+  margin-bottom:30px;
+}
+
+.filters button {
+  background:transparent;
+  border:1px solid #444;
+  color:#aaa;
+  padding:8px 16px;
+  margin-right:10px;
+  border-radius:20px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.filters button.active,
+.filters button:hover {
+  background:white;
+  color:black;
+}
+
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:25px;
+  padding:0 8%;
+}
+
+/* CARD */
+.card {
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  cursor:pointer;
+  transform:translateY(40px);
+  opacity:0;
+  transition:0.6s ease;
+}
+
+/* IMAGE */
+.card img {
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  transition:0.5s ease;
+}
+
+/* HOVER ZOOM */
+.card:hover img {
+  transform:scale(1.1);
+}
+
+/* OVERLAY BASE */
+.overlay {
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:20px;
+  background:linear-gradient(to top, rgba(0,0,0,0.85), transparent 60%);
+}
+
+/* TEXT */
+.overlay h3 {
+  margin:0;
+  font-size:1.2rem;
+}
+
+.overlay p {
+  font-size:0.85rem;
+  color:#aaa;
+  margin-top:5px;
+}
+
+/* EXTRA INFO (hidden by default) */
+.extra {
+  margin-top:10px;
+  font-size:0.8rem;
+  color:#bbb;
+  opacity:0;
+  transform:translateY(10px);
+  transition:0.3s;
+}
+
+/* SHOW ON HOVER */
+.card:hover .extra {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* GLASS TAG */
+.tag {
+  position:absolute;
+  top:15px;
+  left:15px;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+  padding:5px 10px;
+  font-size:0.7rem;
+  border-radius:6px;
+}
+
+/* ACTIVE CARD EFFECT */
+.card:active {
+  transform:scale(0.98);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">BUILT</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="services.html">Services</a>
+    <a href="about.html" class="cta">About Us</a>
+  </nav>
+</header>
+
+<h1>Our Projects</h1>
+
+<div class="filters">
+  <button class="active" onclick="filterProjects('all', this)">All</button>
+  <button onclick="filterProjects('residential', this)">Residential</button>
+  <button onclick="filterProjects('industrial', this)">Industrial</button>
+</div>
+
+<div class="grid">
+
+  <div class="card" data-category="residential">
+    <span class="tag">Residential</span>
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab">
+    <div class="overlay">
+      <h3>Luxury Tower</h3>
+      <p>San José, Costa Rica • 2024</p>
+      <div class="extra">High-end residential development with modern design.</div>
+    </div>
+  </div>
+
+  <div class="card" data-category="industrial">
+    <span class="tag">Industrial</span>
+    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e">
+    <div class="overlay">
+      <h3>Industrial Plant</h3>
+      <p>Alajuela • 2023</p>
+      <div class="extra">Large-scale facility built for efficiency and durability.</div>
+    </div>
+  </div>
+
+  <div class="card" data-category="residential">
+    <span class="tag">Residential</span>
+    <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d">
+    <div class="overlay">
+      <h3>Eco Housing</h3>
+      <p>Heredia • 2024</p>
+      <div class="extra">Sustainable housing project with eco materials.</div>
+    </div>
+  </div>
+
+  <div class="card" data-category="industrial">
+    <span class="tag">Industrial</span>
+    <img src="https://images.unsplash.com/photo-1529429617124-95b109e86bb8">
+    <div class="overlay">
+      <h3>Warehouse Build</h3>
+      <p>Cartago • 2022</p>
+      <div class="extra">Optimized logistics warehouse with modern layout.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* DROPDOWN (if you add later) */
+function toggleDropdown(e){
+  e.stopPropagation();
+}
+
+/* FILTER */
+function filterProjects(category, el) {
+  const cards = document.querySelectorAll('.card');
+  const buttons = document.querySelectorAll('.filters button');
+
+  buttons.forEach(btn => btn.classList.remove('active'));
+  el.classList.add('active');
+
+  cards.forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+/* SCROLL ANIMATION */
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
+});
+
+cards.forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
